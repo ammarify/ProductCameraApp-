@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View , Button, FlatList, Image, ActivityIndicator, Dimensions} from 'react-native'
+import { StyleSheet, Text, View , Button, FlatList, Image, ActivityIndicator, Dimensions, TouchableOpacity} from 'react-native'
 import React, { useEffect, useState } from 'react'
 
 const Productlist = ({navigation}) => {
@@ -36,11 +36,14 @@ useEffect(() => {
       </Text>)
     }
  const renderItem = ({item}) => (
-    <View style={styles.card}>
+   <TouchableOpacity
+   style={styles.card}
+   onPress={() => navigation.navigate('ProductDetail', { product: item })}>
+        
     <Image source={{uri : item.image}} style={styles.image}/>
     <Text style={styles.title}>{item.title}</Text>
     <Text style={styles.price}>$Price:{item.price}</Text>
-    </View>
+ </TouchableOpacity>
 )
   return (
     <FlatList 
