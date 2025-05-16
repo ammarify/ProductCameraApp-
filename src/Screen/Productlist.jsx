@@ -46,15 +46,24 @@ useEffect(() => {
  </TouchableOpacity>
 )
   return (
-    <FlatList 
-    data={products} renderItem={renderItem} 
-    keyExtractor={(item) => item.id.toString()}
-    numColumns={2}
-    contentContainerStyle={styles.container}
-    columnWrapperStyle={{ justifyContent: 'space-between' }}
-/>
   
-  )
+    <View style={{flex: 1}}>
+    <Button
+      title="Open Camera"
+      onPress={() => navigation.navigate('CameraScreen')}
+    />
+    <FlatList 
+      data={products} 
+      renderItem={renderItem} 
+      keyExtractor={(item) => item.id.toString()}
+      numColumns={2}
+      contentContainerStyle={styles.container}
+      columnWrapperStyle={{ justifyContent: 'space-between' }}
+    />
+  </View>
+);
+  
+  
 }
 
 export default Productlist
